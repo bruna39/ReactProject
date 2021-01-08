@@ -1,17 +1,22 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+import { RenderCardHomeComponent } from './CardComponent';
+import RenderCorousel from "./Carousel";
 
-function Home(props) {
+function Home({ cards, carousel }) {
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md m-1">
+        <div>
+            <RenderCorousel items={carousel} />
+            <div className="container">
+                <div className="row">
 
-                </div>
-                <div className="col-md m-1">
-
-                </div>
-                <div className="col-md m-1">
+                    {cards.map(card => {
+                        return (
+                            <div className="col-md-4 d-flex align-items-stretch">
+                                <RenderCardHomeComponent item={card} />
+                            </div>
+                        );
+                    })
+                    }
 
                 </div>
             </div>
