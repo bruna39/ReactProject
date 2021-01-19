@@ -5,7 +5,8 @@ import Home from './HomeComponent';
 import Contact from "./ContactComponent";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { CARDS } from "../shared/cards";
-import { CAROUSEL } from "../shared/carousel";
+import { COLLAPSE } from "../shared/collapse";
+
 
 class Main extends Component {
 
@@ -13,7 +14,8 @@ class Main extends Component {
         super(props);
         this.state = {
             cards: CARDS,
-            carousel: CAROUSEL
+            carousel: CAROUSEL,
+            collapse: COLLAPSE
         };
     }
 
@@ -24,7 +26,14 @@ class Main extends Component {
                 <Home
                     cards={this.state.cards.filter(card => card.homeComponent)}
                     carousel={this.state.carousel.filter(itemCarousel => itemCarousel.homeComponent)}
+                    collapse={this.state.collapse.filter(itemCollapse => itemCollapse.homeComponent)}
                 />
+            );
+        };
+
+        const ShopPage = () => {
+            return (
+                <div />
             );
         };
 
@@ -33,6 +42,7 @@ class Main extends Component {
                 <Header />
                 <Switch>
                     <Route path='/home' component={HomePage} />
+                    <Route path='/shop' component={ShopPage} />
                     <Route path='/contactus' component={Contact} />
                     <Redirect to='/home' />
                 </Switch>
